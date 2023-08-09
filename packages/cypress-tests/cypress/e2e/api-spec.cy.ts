@@ -12,8 +12,9 @@ beforeEach(() => {
     1. Make GET Request to https://jsonplaceholder.typicode.com/posts/1
     2. Save result to response variable
   */
-
-  response = null;
+  cy.request('https://jsonplaceholder.typicode.com/posts/1').then((res) => {
+    response = res;
+  });
 });
 
 describe('https://jsonplaceholder.typicode.com/posts/1', () => {
@@ -33,11 +34,23 @@ describe('https://jsonplaceholder.typicode.com/posts/1', () => {
       - title: string
       - body: string
     */
+
+    expect(response.body).to.have.property('userId');
+    expect(response.body).to.have.property('id');
+    expect(response.body).to.have.property('title');
+    expect(response.body).to.have.property('body');
+
+    expect(response.body.userId).to.be.a('number');
+    expect(response.body.id).to.be.a('number');
+    expect(response.body.title).to.be.a('string');
+    expect(response.body.body).to.be.a('string');
   });
 
   it('should return ContentType header with value application/json; charset=utf-8', () => {
     /*
       1. Expect response to return header with value application/json; charset=utf-8
     */
+
+    expect(response.headers['content-type']).to.eq('application/json; charset=utf-8');
   });
 });
