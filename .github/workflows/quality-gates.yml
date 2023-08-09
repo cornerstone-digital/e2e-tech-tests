@@ -1,0 +1,23 @@
+name: Quality Gates
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  e2e:
+    timeout-minutes: 60
+    runs-on: [self-hosted, Linux]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Initialize Workflow
+        uses: ./.github/actions/init-workflow
+      - name: Setup Playwright
+        uses: ./.github/actions/setup-playwright
+      - name: Run Playwright
+        shell: bash
+        run: pnpm e2e

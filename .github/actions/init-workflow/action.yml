@@ -1,0 +1,23 @@
+name: Init Workflow
+description: Initializes the workflow with Yarn and NodeJS
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      env:
+        NODE_TLS_REJECT_UNAUTHORIZED: 0
+      with:
+        node-version-file: .nvmrc
+    - name: Install PNPM and only-allow
+      shell: bash
+      run: npm install --global pnpm only-allow
+    - name: Enable Insecure SSL
+      shell: bash
+      run: npm config set strict-ssl false --global
+    - name: Install dependencies
+      env:
+        NODE_TLS_REJECT_UNAUTHORIZED: 0
+      shell: bash
+      run: pnpm install --frozen-lockfile

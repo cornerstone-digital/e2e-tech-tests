@@ -1,16 +1,26 @@
-import { test } from '@playwright/test';
+import { test, expect, APIResponse } from '@playwright/test';
 
-test('should return the 200 Response', async ({ page }) => {
+let response: APIResponse | null = null;
+
+test.beforeEach(async ({ request }) => {
   /*
     1. Make GET Request to https://jsonplaceholder.typicode.com/posts/1
-    2. Expect response to return 200 status code
+    2. Save result to response variable
   */
+  response = null;
 });
 
-test('should return correct object structure', async ({ page }) => {
+test('should return the 200 Response', async () => {
   /*
-    1. Make GET Request to https://jsonplaceholder.typicode.com/posts/1
-    2. Expect response to return object that matches follwing schema
+    Expect response to return 200 status code
+  */
+
+  expect(response?.status()).toBe(200);
+});
+
+test('should return correct object structure', async () => {
+  /*
+    Expect response to return object that matches follwing schema
     - userId: number
     - id: number
     - title: string
@@ -18,11 +28,8 @@ test('should return correct object structure', async ({ page }) => {
   */
 });
 
-test('should return ContentType header with value application/json; charset=utf-8', async ({
-  page,
-}) => {
+test('should return ContentType header with value application/json; charset=utf-8', async () => {
   /*
-    1. Make GET Request to https://jsonplaceholder.typicode.com/posts/1
-    2. Expect response to return header with value application/json; charset=utf-8
+    Expect response to return header with value application/json; charset=utf-8
   */
 });

@@ -6,7 +6,8 @@
   "scripts": {
     "e2e:cy": "nx run cypress-tests:e2e",
     "e2e:pw": "nx run playwright-tests:e2e",
-    "e2e": "nx run-many --target=e2e"
+    "e2e:both": "pnpm run e2e:cy && pnpm run e2e:pw",
+    "e2e": "nx affected --target=e2e"
   },
   "keywords": [],
   "author": "",
