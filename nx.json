@@ -1,0 +1,16 @@
+{
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["e2e"]
+      }
+    }
+  },
+  "affected": {
+    "defaultBase": "origin/main"
+  },
+  "plugins": ["nx/plugins/package-json"],
+  "extends": "nx/presets/npm.json",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
+}

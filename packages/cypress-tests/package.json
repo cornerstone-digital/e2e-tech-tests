@@ -1,0 +1,17 @@
+{
+  "name": "cypress-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "e2e": "cypress run --browser=chrome"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.0",
+    "cypress": "^12.17.3",
+    "typescript": "^5.1.6"
+  }
+}
