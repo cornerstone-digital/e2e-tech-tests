@@ -9,7 +9,7 @@ on:
 jobs:
   e2e:
     timeout-minutes: 60
-    runs-on: [self-hosted, Linux]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
@@ -18,6 +18,6 @@ jobs:
         uses: ./.github/actions/init-workflow
       - name: Setup Playwright
         uses: ./.github/actions/setup-playwright
-      - name: Run Playwright
+      - name: Run E2E Tests
         shell: bash
         run: pnpm e2e
